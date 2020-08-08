@@ -1,13 +1,23 @@
 package nasir.di.controllers;
 
-import nasir.di.services.GreetingServiceImpl;
+import nasir.di.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class PropertyInjectedController {
-
-    public GreetingServiceImpl greetingService;
+    // You can comment this out and use spring relection
+    //  instead of the implementation name being the type , put it the name of variable
+    //    public GreetingServiceImpl greetingService;
+    //
+    //    public String sayHello(){
+    //        return greetingService.sayGreeting();
+    //    }
+    @Autowired
+    public GreetingService greetingServiceImpl;
 
     public String sayHello(){
-        return greetingService.sayGreeting();
+        return greetingServiceImpl.sayGreeting();
     }
 
 }
